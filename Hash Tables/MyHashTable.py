@@ -34,6 +34,8 @@ class MyHashTable():
         key = str(key)
         address = self._Myhash(key)
         # If no collision
+        # We can use LL to solve collision by the way because
+        # LL has faster insertion and deletion.
         if self.table[address] is None:
             self.table[address] = []
         self.table[address].append([key, value])
