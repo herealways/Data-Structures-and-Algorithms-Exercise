@@ -62,7 +62,7 @@ class MyLinkedList():
         for node in nodes[1:]:
             self.prepend(node)
 
-    # From the course. This solution is about 2 times faster than mine
+    # From the course. This solution is about 4 times faster than mine
     def reverse2(self):
         if self.length == 1:
             return
@@ -109,22 +109,18 @@ if __name__ == "__main__":
     print('\n', my_ll, '\n', my_ll.head, '\n', my_ll.tail)
 
     # Test which reverse method is more efficient
-    from timeit import timeit
-    test_reverse1 = """
-my_ll = MyLinkedList(10)
-my_ll.append(5)
-my_ll.append(16)
-my_ll.prepend(7)
-my_ll.reverse()
-"""
+    import timeit
+    test_reverse1 = "my_ll.reverse()"
 
-    test_reverse2 = """
+    test_reverse2 = "my_ll.reverse2()"
+    setup_code = """
+from __main__ import MyLinkedList
 my_ll = MyLinkedList(10)
 my_ll.append(5)
 my_ll.append(16)
 my_ll.prepend(7)
-my_ll.reverse2()
 """
-    setup_code = 'from __main__ import MyLinkedList'
-    print(timeit(test_reverse1, setup_code))
-    print(timeit(test_reverse2, setup_code))
+    reverse_time = timeit.repeat(test_reverse1, setup_code, repeat=3)
+    reverse2_time = timeit.repeat(test_reverse2, setup_code, repeat=3)
+    print(f"Minimum execution time for reverse is {min(reverse_time)}")
+    print(f"Minimum execution time for reverse2 is {min(reverse2_time)}")
