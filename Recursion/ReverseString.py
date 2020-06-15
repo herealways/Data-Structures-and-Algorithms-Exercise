@@ -1,7 +1,7 @@
 def reverseString(string):
     str_list = list(string)
     length = len(str_list)
-    for i in range(int(length / 2)):
+    for i in range(length // 2):
         temp = str_list[i]
         j = length - i - 1
         str_list[i] = str_list[j]
