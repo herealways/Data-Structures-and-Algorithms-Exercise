@@ -10,7 +10,7 @@ def mergeSort(numbers: list) -> list:
 
 
 def merge(left, right):
-    sorted_numbers = []  # My implementation is not-in-place or out-of-space
+    sorted_numbers = []  # not-in-place or out-of-space
     i = j = 0  # index for left and right
     len_left = len(left)
     len_right = len(right)
@@ -30,7 +30,6 @@ def merge(left, right):
     return sorted_numbers
 
 
-# This is an im place inplementation
 def mergeSort2(arr):  # From https://www.geeksforgeeks.org/merge-sort/
     if len(arr) > 1:
         mid = len(arr) // 2  # Finding the mid of the array
