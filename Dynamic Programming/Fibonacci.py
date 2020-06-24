@@ -21,10 +21,13 @@ def FibonacciDynamic():  # Top-down memoization
 
 
 def FibonacciDynamic2(x):  # Bottom-up approach
-    answer = [0, 1]
+    prev_answer2 = 0
+    prev_answer1 = 1
     for i in range(2, x+1):
-        answer.append(answer[i - 2] + answer[i - 1])
-    return answer.pop()
+        answer = prev_answer2 + prev_answer1
+        prev_answer2 = prev_answer1
+        prev_answer1 = answer
+    return answer
 
 
 if __name__ == "__main__":
@@ -32,7 +35,7 @@ if __name__ == "__main__":
     # print(FibonacciIterative(35))
     # Fibo_dynamic = FibonacciDynamic()
     # print(Fibo_dynamic(35))
-    # print(FibonacciDynamic2(10))
+    print(FibonacciDynamic2(10))
     import timeit
     test_fibonacci1 = 'FibonacciRecursive(25)'
     test_fibonacci2 = 'FibonacciIterative(25)'
